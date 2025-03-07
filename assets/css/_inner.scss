@@ -1,0 +1,100 @@
+// breadcrumb
+.breadcrumb-area {
+    position: relative;
+    z-index: 1;
+    background-image: url(../images/breadcrumb/breadcrumb-image.png);
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    padding: 10px 0;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    min-height: 350px;
+
+    &::before {
+        content: "";
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        background: rgba($theme-bg, 0.8);
+        left: 0;
+        top: 0;
+        opacity: 0.5;
+        z-index: -1;
+    }
+}
+
+.page-breadcrumb {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    .list {
+        li {
+            display: inline-block;
+            color: $theme-accent-two;
+            position: relative;
+            padding-right: 16px;
+            padding-left: 16px;
+            font-weight: 600;
+
+
+            &:first-child {
+                padding-left: 0px;
+
+                &::before {
+                    display: none;
+                }
+            }
+
+            a {
+                color: $theme-secondary-color;
+                display: inline-block;
+
+                &::before {
+                    content: "\F309";
+                    position: absolute;
+                    right: -20px;
+                    top: -5px;
+                    font-family: bootstrap-icons !important;
+                    font-size: 2rem;
+                    line-height: initial;
+                    color: $theme-secondary-color;
+
+                }
+
+                &:hover {
+                    color: $theme-primary-color;
+                }
+            }
+        }
+    }
+}
+
+.login-app {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+
+    li {
+        padding: 1rem 0.5rem;
+        display: flex;
+
+        a {
+            border: 1px solid $theme-primary-color;
+            padding: 0.5rem;
+            border-radius: 50rem;
+
+            svg {
+                fill: $theme-color-white;
+            }
+
+            &:hover {
+                color: inherit;
+                background-color: $theme-primary-color;
+            }
+        }
+
+    }
+}

@@ -1,0 +1,665 @@
+@import 'vandors';
+@import 'var';
+@import 'reset';
+@import 'mixin';
+@import 'down';
+@import 'global';
+@import 'inner';
+
+// preloader css
+.page-loader {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    background: $theme-color-white;
+    z-index: 9999;
+    overflow: visible;
+
+    .loader {
+        width: 100%;
+        height: 300px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 20px;
+
+        .dot {
+            height: 40px;
+            width: 40px;
+            border-radius: 50%;
+
+            &:nth-child(1) {
+                background-color: $theme-primary-color;
+                animation: jump 0.6s 0.5s ease-in infinite
+            }
+
+            &:nth-child(2) {
+                background-color: $theme-secondary-color;
+                animation: jump 0.6s 0.7s ease-in infinite
+            }
+
+            &:nth-child(3) {
+                background-color: $theme-accent-one;
+                animation: jump 0.6s 0.9s ease-in infinite
+            }
+        }
+    }
+
+    @keyframes jump {
+        0% {
+            transform: translate3D(0, 0, 0);
+            opacity: 0;
+        }
+
+        50% {
+            transform: translate3D(0, -15px, 0);
+            opacity: 0.5;
+        }
+
+        100% {
+            transform: translate3D(0, 0, 0);
+            opacity: 1;
+        }
+    }
+}
+
+// header css part
+.header {
+    background-color: rgba($theme-secondary-color, .5);
+    width: 100%;
+    position: absolute;
+    z-index: 2;
+
+    @media screen and (max-width:$break-large) {
+        background-color: rgba($theme-secondary-color, .99);
+    }
+
+    .navbar-nav {
+        .nav-item {
+            .nav-link {
+                color: $theme-primary-color;
+                padding: 1.2rem 1rem;
+                font-weight: 600;
+
+                @media screen and (max-width:$break-large) {
+                    padding: 0.8rem 0rem;
+                    border-bottom: 1px solid $theme-color-white;
+                }
+            }
+
+            .active {
+                &:after {
+                    content: '';
+                    width: 0.5rem;
+                    height: 0.5rem;
+                    background: $theme-primary-color;
+                    position: absolute;
+                    bottom: 0;
+                    display: block;
+                    left: 43%;
+                    border-radius: 3rem;
+                }
+            }
+
+            .dropdown-menu {
+                border-radius: 0;
+                border: 0;
+                padding: 0;
+                @include theme-shadow;
+
+                .dropdown-item {
+                    color: $theme-accent-one;
+                    padding: 0.8rem 1rem;
+                    font-weight: 600;
+
+                    &:hover {
+                        background-color: $theme-primary-color;
+                        color: $theme-color-white;
+                    }
+                }
+
+            }
+        }
+    }
+}
+
+// header fixed animation
+.smooth {
+    animation-duration: 1s;
+    animation-fill-mode: both;
+    animation-name: fadeInDown;
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        -ms-transform: translate3d(0, -100%, 0);
+        transform: translate3d(0, -100%, 0);
+    }
+
+    to {
+        opacity: 1;
+        -webkit-transform: none;
+        -ms-transform: none;
+        transform: none;
+    }
+}
+
+// nav button effect css
+.nav-effect {
+    position: relative;
+
+    &::before {
+        content: '';
+        position: absolute;
+        bottom: 0%;
+        left: 43%;
+        width: 0.5rem;
+        height: 0.5rem;
+        background: $theme-primary-color;
+        transform-origin: center center;
+        transform: scale(0, 1);
+        transition: transform 0.4s cubic-bezier(1, 0, 0, 1);
+        border-radius: 3rem;
+
+        @media screen and (max-width:$break-large) {
+            left: 0%;
+        }
+    }
+
+    &:hover {
+        &:before {
+            transform-origin: center center;
+            transform: scale(1, 1);
+        }
+    }
+}
+
+// hero section css
+.hero {
+    position: relative;
+    background-image: url(../images/hero/hero-dark-bg.jpg);
+    background-repeat: no-repeat;
+    background-position: center center;
+    position: relative;
+    background-size: cover;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .max {
+        max-width: 650px;
+        margin: 0 auto;
+    }
+}
+
+// experience css part
+.experience {
+    background-color: $theme-primary-color;
+
+    .list {
+        display: flex;
+        flex-direction: column;
+        border: 2px solid $theme-primary-color;
+        padding: 1rem;
+        border-radius: $theme-border-radius;
+
+        .image-icon {
+            img {
+                max-width: initial;
+            }
+        }
+
+        .con {
+            margin-left: 1rem;
+            text-align: center;
+        }
+    }
+}
+
+// All games css
+.games {
+    position: relative;
+    background-color: $theme-color-white;
+
+    .frame {
+        direction: rtl;
+        margin-top: 6rem;
+
+        img {
+            max-width: unset;
+
+            @media screen and (max-width:$break-large) {
+                max-width: 100%;
+            }
+        }
+    }
+
+    .game-card {
+        background-color: $theme-color-white;
+        transition: all ease-in-out 0.3s;
+
+        &:hover {
+            transform: translateY(10px);
+        }
+
+        .icon-bg {
+            align-items: center;
+            justify-content: center;
+            display: flex;
+            margin: 0 auto;
+        }
+    }
+}
+
+// how to play
+.howtoplay {
+    background-color: $theme-primary-color;
+
+    .step-card {
+        cursor: pointer;
+        position: relative;
+        z-index: 0;
+        overflow: hidden;
+        border-radius: $theme-border-radius;
+
+        &:before {
+            content: "";
+            position: absolute;
+            z-index: -1;
+            top: 0;
+            left: 0;
+            background: rgba($theme-accent-one, 0.5);
+            height: 2.5rem;
+            width: 2.5rem;
+            border-radius: 50%;
+
+        }
+
+    }
+
+    .step-card:hover {
+        p {
+            transition: all 0.3s ease-out;
+        }
+    }
+
+    .step-corner {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        width: 2.5rem;
+        height: 2.5rem;
+        overflow: hidden;
+        top: 0;
+        left: 0;
+        border-radius: 50%;
+        background: $theme-secondary-color;
+
+        .step-arrow {
+            color: $theme-primary-color;
+        }
+    }
+}
+
+// features css part
+.features {
+    background-color: $theme-color-white;
+
+    .icon-bg {
+        img {
+            width: auto;
+            margin: auto;
+        }
+    }
+
+    .owl-carousel {
+        margin-top: 4rem;
+    }
+
+    .owl-nav {
+        position: absolute;
+        top: -70px;
+        margin: 0;
+        left: 0;
+        width: 100%;
+
+        button.owl-prev,
+        button.owl-next {
+            padding: 2rem;
+            width: 3rem;
+            height: 3rem;
+            border-radius: 50%;
+            background-color: $theme-primary-color;
+            border: 2px solid $theme-primary-color;
+            font-size: 2rem;
+
+            &:hover {
+                background-color: $theme-secondary-color;
+                border: 2px solid $theme-secondary-color;
+            }
+        }
+    }
+}
+
+// review css part section
+.review {
+    background-color: $theme-color-white;
+
+    .icon-bg {
+        border-radius: 100%;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        max-width: 120px;
+        max-height: 120px;
+
+        img {
+            width: auto;
+            margin: auto;
+        }
+    }
+
+    .owl-carousel {
+        margin-top: 4rem;
+    }
+
+    .owl-nav {
+        margin: 0;
+        width: 100%;
+
+        button.owl-prev,
+        button.owl-next {
+            padding: 2rem;
+            width: 3rem;
+            height: 3rem;
+            border-radius: 50%;
+            background-color: $theme-primary-color;
+            border: 2px solid $theme-primary-color;
+            font-size: 2rem;
+
+            &:hover {
+                background-color: $theme-secondary-color;
+                border: 2px solid $theme-secondary-color;
+            }
+        }
+    }
+}
+
+// demo video section
+.demo {
+    background-color: $theme-color-white;
+
+    .group {
+        display: flex;
+        background-image: url(../images/video-bg.png);
+        background-position: center center;
+        min-height: 500px;
+        border-radius: $theme-border-radius;
+        justify-content: center;
+        position: relative;
+        overflow: hidden;
+
+        &::before {
+            content: '';
+            display: block;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            background-color: rgba($theme-primary-color, 0.5);
+
+        }
+    }
+
+    .video-icon {
+        border-radius: 50%;
+        background-color: $theme-secondary-color;
+        color: $theme-secondary-color;
+        line-height: 60px;
+        width: 60px;
+        height: 60px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        animation: pulseBig infinite 4s linear;
+
+        i {
+            color: $theme-primary-color;
+            font-size: 1.5rem;
+        }
+    }
+
+    // pulseBig
+    @keyframes pulseBig {
+        0% {
+            box-shadow: 0 0 0 0 $theme-color-white;
+        }
+
+        50% {
+            box-shadow: 0 0 0 20px rgba(1, 93, 199, 0);
+        }
+
+        100% {
+            box-shadow: 0 0 0 0 rgba(1, 93, 199, 0);
+        }
+    }
+}
+
+// faq css part section
+.faq {
+    background-color: $theme-accent-three;
+
+    .accordion-item {
+        border: 0;
+        margin-bottom: 1.5rem;
+        background-color: $theme-color-white;
+        border-radius: $theme-border-radius;
+        border: none;
+
+        .accordion-button {
+            background-color: $theme-color-white;
+            color: $theme-primary-color;
+            border-radius: $theme-border-radius !important;
+            padding: 1.2rem 2rem;
+            border: none;
+            font-size: 1rem;
+            font-weight: 600;
+            box-shadow: none;
+
+            i {
+                font-size: 1.5rem;
+            }
+
+            &::after {
+                color: $theme-color-white;
+            }
+
+            &::after {
+                flex-shrink: 0;
+                width: 20px;
+                height: 20px;
+                content: "";
+                background-image: url(../images/icons/arrow-minus.png);
+                background-repeat: no-repeat;
+                background-size: 20px;
+                position: absolute;
+                right: 30px;
+                transition: all ease 0.3s;
+            }
+
+            &.collapsed {
+                &::after {
+                    width: 20px;
+                    height: 20px;
+                    content: "";
+                    background-image: url(../images/icons/arrow-plus.png);
+                    background-repeat: no-repeat;
+                    background-size: 20px;
+                    transform: rotate(-90deg);
+                    transition: all ease 0.3s;
+                }
+            }
+        }
+
+        .accordion-body {
+            padding: 0 20px;
+
+            p {
+                border-top: 1px solid $theme-primary-color;
+                padding: 20px 0;
+            }
+        }
+    }
+
+}
+
+// footer css part
+.footer {
+    background-color: $theme-primary-color;
+
+    h1,
+    h2,
+    h3,
+    h4 {
+        color: $theme-secondary-color;
+    }
+
+    p {
+        line-height: 2.2rem;
+    }
+
+    .link-list {
+        display: flex;
+        justify-content: center;
+
+        @media screen and (max-width:$break-large) {
+            flex-direction: column;
+        }
+
+        li {
+            line-height: 2.5rem;
+            padding: 0 1rem;
+
+            a {
+                color: $theme-color-white;
+                font-size: 1.25rem;
+
+                &:hover {
+                    color: $theme-secondary-color;
+                }
+            }
+        }
+    }
+
+    .social {
+
+        a {
+            color: $theme-primary-color;
+            width: 3rem;
+            height: 3rem;
+            border-radius: 50%;
+            display: inline-block;
+            background: $theme-color-white;
+            line-height: 3rem;
+            font-size: 1.5rem;
+            margin-right: 0.5rem;
+
+            &:last-child {
+                margin-right: 0;
+            }
+
+            &:hover {
+                background: $theme-secondary-color;
+            }
+        }
+    }
+
+
+}
+
+// footer menu effect
+.footer-link-effect {
+    position: relative;
+
+    &::before {
+        content: '';
+        position: absolute;
+        bottom: 0%;
+        left: 0px;
+        width: 100%;
+        height: 2px;
+        border-radius: 0.5rem;
+        background: $theme-secondary-color;
+        transform-origin: right top;
+        transform: scale(0, 1);
+        transition: transform 0.4s cubic-bezier(1, 0, 0, 1)
+    }
+
+    &:hover {
+        &::before {
+            transform-origin: left top;
+            transform: scale(1, 1)
+        }
+    }
+}
+
+// back to top button css
+.scrollup {
+    overflow: hidden;
+    position: fixed;
+    height: 3rem;
+    width: 3rem;
+    line-height: 3rem;
+    border-radius: 50%;
+    bottom: -3rem;
+    right: 3rem;
+    text-align: center;
+    z-index: 1;
+    background-color: $theme-secondary-color;
+    display: block;
+    color: $theme-primary-color;
+    transition: all 0.5s cubic-bezier(0, 0, 0.15, 1.88);
+
+    i {
+        font-size: 1.5rem;
+        display: inline-block;
+        transition: all 0.5s ease-out;
+
+        &:hover,
+        &:focus {
+            animation: toBottomFromTop 0.5s forwards;
+        }
+    }
+
+    &:hover,
+    &:focus {
+        color: $theme-primary-color;
+    }
+
+    &.back-top {
+        bottom: 20px;
+    }
+
+    @keyframes toBottomFromTop {
+        49% {
+            transform: translateY(-20%);
+        }
+
+        50% {
+            opacity: 0;
+            transform: translateY(20%);
+        }
+
+        51% {
+            opacity: 0;
+        }
+
+        80% {
+            opacity: 1;
+        }
+    }
+}

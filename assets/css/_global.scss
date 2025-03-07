@@ -1,0 +1,222 @@
+@import 'mixin';
+
+html {
+    font-size: 1rem;
+}
+
+body {
+    font-family: 'Nunito Sans', sans-serif;
+    color: $theme-color-white;
+}
+
+a,
+a:hover {
+    text-decoration: none;
+}
+
+.font-small {
+    font-size: $font-small;
+}
+
+.font-extra-small {
+    font-size: $font-extra-small;
+}
+
+.font-black {
+    font-weight: $font-black;
+}
+
+/*-- background color css --*/
+.bg-color {
+    background-color: $theme-bg;
+}
+
+.theme-bg-primary {
+    background-color: $theme-primary-color;
+}
+
+.theme-bg-secondary {
+    background-color: $theme-secondary-color;
+}
+
+.theme-bg-accent-one {
+    background-color: $theme-accent-one;
+}
+
+.theme-bg-accent-two {
+    background-color: $theme-accent-two;
+}
+
+.theme-bg-accent-three {
+    background-color: $theme-accent-three;
+}
+
+.theme-bg-white {
+    background-color: $theme-color-white;
+}
+
+.theme-transparent-bg {
+    background-color: rgba($theme-primary-color, 0.1);
+}
+
+/*-- text color css --*/
+.theme-text-white {
+    color: $theme-color-white;
+}
+
+.theme-text-primary {
+    color: $theme-primary-color;
+}
+
+.theme-text-secondary {
+    color: $theme-secondary-color;
+}
+
+.theme-text-accent-one {
+    color: $theme-accent-one;
+}
+
+.theme-text-accent-two {
+    color: $theme-accent-two;
+}
+
+.theme-text-accent-three {
+    color: $theme-accent-three;
+}
+
+/*-- shadow css --*/
+.theme-box-shadow {
+    @include theme-shadow
+}
+
+.theme-text-shadow {
+    text-shadow: $theme-text-shadow;
+}
+
+.theme-border-radius {
+    border-radius: $theme-border-radius;
+}
+
+.theme-border-primary {
+    border: 2px solid $theme-primary-color;
+}
+
+.theme-border-secondary {
+    border: 2px solid $theme-secondary-color;
+}
+
+.end-10 {
+    right: 10px;
+}
+
+/*-- custom button css*/
+.custom-btn-primary {
+    @include custom-btn-primary;
+}
+
+.custom-btn-secondary {
+    @include custom-btn-secondary;
+}
+
+.custom-link {
+    @include custom-link;
+}
+
+/*-- primary button effect css --*/
+.primary-btn-effect {
+    font-weight: 600;
+    cursor: pointer;
+    display: inline-block;
+    border: 2px solid $theme-secondary-color;
+    border-radius: 50px;
+    transition: all .15s ease-in-out;
+    color: $theme-color-white;
+
+    &:hover {
+        box-shadow: 0 0 10px 0 $theme-secondary-color inset, 0 0 10px 2px $theme-secondary-color;
+        border: 2px solid $theme-primary-color;
+        color: $theme-color-white;
+        background-color: $theme-primary-color;
+
+    }
+}
+
+/*-- secondary button css --*/
+.secondary-btn-effect {
+    font-weight: 600;
+    cursor: pointer;
+    display: inline-block;
+    border: 2px solid $theme-secondary-color;
+    border-radius: 50px;
+    transition: all .15s ease-in-out;
+    color: $theme-primary-color;
+
+    &:hover {
+        box-shadow: 0 0 10px 0 $theme-secondary-color inset, 0 0 10px 2px $theme-secondary-color;
+        border: 2px solid $theme-primary-color;
+        color: $theme-secondary-color;
+        background-color: $theme-primary-color;
+
+    }
+}
+
+/*-- video button css --*/
+.icon-wrapper {
+    box-shadow: 0 0 0px 0px rgba($theme-secondary-color, 0.5);
+    cursor: pointer;
+    border-radius: 50%;
+    transition: 250ms color;
+    animation-name: wave;
+    animation-duration: 1s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+
+    @keyframes wave {
+        0% {
+            box-shadow: 0 0 0px 0px rgba($theme-secondary-color, 0.5);
+        }
+
+        100% {
+            box-shadow: 0 0 0px 15px rgba($theme-secondary-color, 0);
+        }
+    }
+}
+
+// input css
+.form-control:focus {
+    outline: none;
+    box-shadow: none;
+    border: 1px solid $theme-primary-color;
+    background-color: transparent;
+    color: $theme-secondary-color;
+    box-shadow: 0 0 10px 0 $theme-primary-color inset, 0 0 10px 2px $theme-primary-color;
+}
+
+.form-control-th {
+    height: 50px;
+    background: $theme-bg;
+    border: 1px solid $theme-primary-color;
+    color: $theme-secondary-color;
+}
+
+// custom radio button 
+.form-check-input {
+    border: 2px solid $theme-primary-color;
+    height: 24px;
+    width: 24px;
+    margin-right: 8px;
+    vertical-align: middle;
+    vertical-align: top;
+    background-color: transparent;
+    margin-top: 0px;
+    cursor: pointer;
+
+    &:checked {
+        background-color: $theme-primary-color;
+        border-color: $theme-primary-color;
+    }
+}
+
+.form-check-label {
+    cursor: pointer;
+}
