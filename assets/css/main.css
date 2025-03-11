@@ -483,12 +483,12 @@ a:hover {
 }
 @media screen and (max-width: 992px) {
   .header {
-    background-color: rgba(252, 181, 3, 0.99);
+    background-color: rgba(0, 0, 0, 0.99);
     
   }
 }
 .header .navbar-nav .nav-item .nav-link {
-  color: #101646;
+  color: rgb(214, 186, 0);
   padding: 1.2rem 1rem;
   font-weight: 600;
 }
@@ -967,3 +967,65 @@ a:hover {
     opacity: 1;
   }
 }/*# sourceMappingURL=main.css.map */
+
+
+
+
+.fixed-contact-icons {
+  position: fixed;
+  bottom: 20px; /* Adjust for distance from the bottom */
+  right: 20px; /* Adjust for distance from the right */
+  z-index: 9999; /* Ensure it stays on top of other content */
+  display: flex;
+  flex-direction: column; /* Stack icons vertically */
+  gap: 10px; /* Space between the icons */
+}
+
+.icon {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white; /* Background for contrast */
+  border-radius: 50%; /* Make it circular */
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Add slight shadow for effect */
+  transition: transform 0.3s ease; /* Smooth scaling animation */
+}
+
+.icon img {
+  width: 70%;
+  height: 70%;
+  object-fit: contain;
+}
+
+.icon:hover {
+  transform: scale(1.1); /* Slight zoom on hover */
+  box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.2); /* Enhance shadow on hover */
+}
+
+.whatsapp-icon {
+  background-color: #25d366; /* WhatsApp green color */
+}
+
+.insta-icon {
+  background-color: #fc8f91; /* A green shade for the call button */
+}
+
+.tele-icon {
+  background-color: #e8f4ff; /* A green shade for the call button */
+}
+
+/* For smartphone mode */
+@media (max-width: 768px) {
+  .fixed-contact-icons {
+    bottom: 15px; /* Adjust distance from the bottom for smaller screens */
+    right: 10px;  /* Adjust distance from the right */
+    gap: 15px; /* Space between icons for better alignment on smaller screens */
+  }
+
+  .icon {
+    width: 60px; /* Slightly larger icons on mobile */
+    height: 60px;
+  }
+}
